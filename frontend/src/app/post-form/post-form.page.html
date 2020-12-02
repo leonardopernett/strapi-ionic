@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/posts"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ edit ? 'edit' : 'Create ' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ edit ? 'edit post' : 'Create new Post' }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-item>
+        <ion-label position="floating">title</ion-label>
+        <ion-input #title value="{{post.title}}">  </ion-input>
+      </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">subtitle</ion-label>
+          <ion-input #subtitle value="{{post.subtitle}}">  </ion-input>
+        </ion-item>
+
+        <ion-item>
+        <ion-label position="floating">description</ion-label>
+        <ion-input #description value="{{post.description}}">  </ion-input>
+      </ion-item>
+
+      <ion-button  color="primary"   expand="full" (click)="edit ? updatePost(title, description,subtitle) :createPost(title, description,subtitle)">{{edit ? 'edit Post':'create Post'}}</ion-button>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

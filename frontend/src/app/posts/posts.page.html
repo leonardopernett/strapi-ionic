@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>posts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let post of posts" size="12" size-md="4" size-sm="2">
+        <ion-card >
+          <img height="300" [src]="post.image && post.image.url ? 'http://localhost:1337'+post.image.url : 'assets/no-image.png' " alt="">
+          <ion-card-header>
+            <ion-card-title>
+               {{post.title}}
+            </ion-card-title>
+            {{post.subtitle}}
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{post.description}}</p>
+            <p>{{post.created_at | date}}</p>
+            <br>
+            <ion-button color="secondary" (click)="editPost(post.id)" >edit</ion-button>
+            <ion-button color="danger" (click)="deletePost(post.id)">delete</ion-button>
+      
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/post-form']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
